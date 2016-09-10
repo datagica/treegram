@@ -44,27 +44,29 @@ treegram
 // will print:
 [
   {
-    "ngram":"Vegeta",
-    "value":{
-      "label":"vegeta",
-      "description":"character"
+    "ngram": "Vegeta",
+    "value": {
+      "label": "vegeta",
+      "description": "character"
     },
-    "score":1,
-    "position":{
-      "substring":{"begin":0,"end":6},
-      "fullstring":{"begin":0,"end":6}
-    }
+    "score": 1,
+    "position": {
+      "index": 0,
+      "begin": 0,
+      "end": 6
+    },
   },
   {
-    "ngram":"vegetables",
-    "value":{
-      "label":"vegetable",
-      "description":"edible thing"
+    "ngram": "vegetables",
+    "value": {
+      "label": "vegetable",
+      "description": "edible thing"
     },
-    "score":0.8,
-    "position":{
-      "substring":{"begin":17,"end":27},
-      "fullstring":{"begin":17,"end":27}
+    "score": 0.8,
+    "position": {
+      "index": 3,
+      "begin": 17,
+      "end": 27
     }
   }
 ]

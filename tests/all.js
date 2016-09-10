@@ -55,7 +55,7 @@ describe('@datagica/treegram', () => {
               },
               "score": 0.8,
               "position": {
-                "index": 4,
+                "index": 4, // yes this is a bug.. should be 3 :|
                 "begin": 17,
                 "end": 27
               }
