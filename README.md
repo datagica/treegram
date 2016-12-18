@@ -51,7 +51,6 @@ treegram
     },
     "score": 1,
     "position": {
-      "index": 0,
       "begin": 0,
       "end": 6
     },
@@ -64,7 +63,6 @@ treegram
     },
     "score": 0.8,
     "position": {
-      "index": 3,
       "begin": 17,
       "end": 27
     }
