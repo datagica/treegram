@@ -42,6 +42,7 @@ describe('@datagica/treegram', () => {
               },
               "score": 1,
               "position": {
+                "index": 0,
                 "begin": 0,
                 "end": 6
               }
@@ -54,6 +55,7 @@ describe('@datagica/treegram', () => {
               },
               "score": 0.8,
               "position": {
+                "index": 4,
                 "begin": 17,
                 "end": 27
               }
@@ -143,7 +145,7 @@ describe('@datagica/treegram', () => {
     it('should match non-latin characters', done => {
 
       db.find('浙江大學').then(entities => {
-        // console.log("entities: "+JSON.stringify(entities, null, 2));
+        //console.log("entities: "+JSON.stringify(entities, null, 2));
         expect(entities).to.be.like(
           [
             {
@@ -173,6 +175,7 @@ describe('@datagica/treegram', () => {
               },
               "score": 1,
               "position": {
+                "index": 0,
                 "begin": 0,
                 "end": 4
               }
@@ -201,7 +204,7 @@ describe('@datagica/treegram', () => {
 
     it('should match words with hyphen', done => {
       db.find('marc-olivier et abd-al-quadir').then(entities => {
-        // console.log("entities: " + JSON.stringify(entities, null, 2));
+        //console.log("entities: " + JSON.stringify(entities, null, 2));
         expect(entities).to.be.like(
           [
             {
@@ -214,6 +217,7 @@ describe('@datagica/treegram', () => {
               },
               "score": 1,
               "position": {
+                "index": 0,
                 "begin": 0,
                 "end": 12
               }
@@ -228,6 +232,7 @@ describe('@datagica/treegram', () => {
               },
               "score": 1,
               "position": {
+                "index": 2,
                 "begin": 16,
                 "end": 29
               }

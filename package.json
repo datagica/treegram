@@ -1,6 +1,6 @@
 {
   "name": "@datagica/treegram",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Treegram",
   "main": "./lib/treegram.js",
   "scripts": {
