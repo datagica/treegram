@@ -245,5 +245,20 @@ describe('@datagica/treegram', () => {
         console.error(err);
       })
     })
+
+    it('should split complex sentences properly', done => {
+      db.find('hi guys!! what\'s up? got any utf-8.. \'cause I don\'t. but that\'s fine').then(entities => {
+        //console.log("entities: " + JSON.stringify(entities, null, 2));
+        expect(entities).to.be.like(
+          [
+          
+          ]
+        );
+        done();
+
+      }).catch(err => {
+        console.error(err);
+      })
+    })
   })
 })
