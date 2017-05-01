@@ -79,9 +79,7 @@ describe('@datagica/treegram', () => {
           })
         })
 
-      }).catch(err => {
-        console.error(err);
-      })
+      }).catch(err => done(err))
     })
   })
 
@@ -194,9 +192,7 @@ describe('@datagica/treegram', () => {
         ]);
         done();
 
-      }).catch(err => {
-        console.error(err);
-      })
+      }).catch(err => done(err))
     })
     it('should not match other non-latin characters such as •', done => {
 
@@ -205,9 +201,7 @@ describe('@datagica/treegram', () => {
         expect(entities).to.be.like([]);
         done();
 
-      }).catch(err => {
-        console.error(err);
-      })
+      }).catch(err => don(err))
     })
 
     it('should match words with hyphen', done => {
@@ -247,10 +241,7 @@ describe('@datagica/treegram', () => {
           }
         ]);
         done();
-
-      }).catch(err => {
-        console.error(err);
-      })
+      }).catch(err => done(err))
     })
 
     it('should split complex sentences', done => {
@@ -295,10 +286,54 @@ describe('@datagica/treegram', () => {
           }
         ]);
         done();
+      }).catch(err => done(err))
+    })
 
-      }).catch(err => {
-        console.error(err);
-      })
+    it('should split a multi-line sentence', done => {
+      db.find(`
+        hi guys!! what's
+        up? got any
+        utf-8.. 'cause
+        I don't. but
+         that's fine!
+        `).then(entities => {
+        // console.log("entities: " + JSON.stringify(entities, null, 2));
+        expect(entities).to.be.like([
+          {
+            "ngram": "any         utf-8",
+            "value": {
+              "label": {
+                "en": "any utf-8"
+              },
+              "aliases": []
+            },
+            "score": 1,
+            "position": {
+              "sentence": 2,
+              "word": 1,
+              "begin": 42,
+              "end": 59
+            }
+          },
+          {
+            "ngram": "that's fine",
+            "value": {
+              "label": {
+                "en": "that's fine"
+              },
+              "aliases": []
+            },
+            "score": 1,
+            "position": {
+              "sentence": 4,
+              "word": 10,
+              "begin": 99,
+              "end": 110
+            }
+          }
+        ]);
+        done()
+      }).catch(err => done(err))
     })
 
     it('should split basic japanese sentences', done => {
@@ -337,10 +372,8 @@ describe('@datagica/treegram', () => {
             }
           }
         ]);
-        done();
-      }).catch(err => {
-        console.error(err);
-      })
+        done()
+      }).catch(err => done(err))
     })
   })
 })

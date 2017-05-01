@@ -1,6 +1,6 @@
 {
   "name": "@datagica/treegram",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Treegram is a hierarchical n-gram extraction library",
   "main": "./lib/index.js",
   "scripts": {
