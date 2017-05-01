@@ -33,7 +33,7 @@ describe('@datagica/treegram', () => {
     it('should find the example input', done => {
 
       db.find(input).then(entities => {
-        console.log("entities: " + JSON.stringify(entities, null, 2));
+        //console.log("entities: " + JSON.stringify(entities, null, 2));
         expect(entities).to.be.like([
           {
             "ngram": "Vegeta",
@@ -130,6 +130,16 @@ describe('@datagica/treegram', () => {
           en: 'that\'s fine'
         },
         aliases: []
+      }, {
+        label: {
+          en: 'test 1'
+        },
+        aliases: ['について述べる']
+      }, {
+        label: {
+          en: 'test 2'
+        },
+        aliases: ['句点と読点']
       }
     ];
 
@@ -243,15 +253,14 @@ describe('@datagica/treegram', () => {
       })
     })
 
-    it('should split complex sentences properly', done => {
-      db.find(
-        'hi guys!! ' + // sentence 0
-        'what\'s up? ' + // 1
-        'got any utf-8.. ' + // 2
-        '\'cause I don\'t. ' + // 3
-        'but that\'s fine' // 4
+    it('should split complex sentences', done => {
+      db.find('hi guys!! ' + // sentence 0
+          'what\'s up? ' + // 1
+          'got any utf-8.. ' + // 2
+          '\'cause I don\'t. ' + // 3
+          'but that\'s fine' // 4
       ).then(entities => {
-        console.log("entities: " + JSON.stringify(entities, null, 2));
+        //console.log("entities: " + JSON.stringify(entities, null, 2));
         expect(entities).to.be.like([
           {
             "ngram": "any utf-8",
@@ -265,11 +274,11 @@ describe('@datagica/treegram', () => {
             "position": {
               "sentence": 2,
               "word": 1,
-              "begin": 4,
-              "end": 13
+              "begin": 25,
+              "end": 34
             }
           }, {
-            "ngram": "that s fine",
+            "ngram": "that's fine",
             "value": {
               "label": {
                 "en": "that's fine"
@@ -280,13 +289,55 @@ describe('@datagica/treegram', () => {
             "position": {
               "sentence": 4,
               "word": 1,
-              "begin": 4,
-              "end": 15
+              "begin": 57,
+              "end": 68
             }
           }
         ]);
         done();
 
+      }).catch(err => {
+        console.error(err);
+      })
+    })
+
+    it('should split basic japanese sentences', done => {
+      db.find("では主にマル「。」について述べる。句点と読点（“、”）を合わせて句読点と呼ぶ。").then(entities => {
+        //console.log("entities: " + JSON.stringify(entities, null, 2));
+        expect(entities).to.be.like([
+          {
+            "ngram": "について述べる",
+            "value": {
+              "label": {
+                "en": "test 1"
+              },
+              "aliases": ["について述べる"]
+            },
+            "score": 1,
+            "position": {
+              "sentence": 1,
+              "word": 1,
+              "begin": 9,
+              "end": 16
+            }
+          }, {
+            "ngram": "句点と読点",
+            "value": {
+              "label": {
+                "en": "test 2"
+              },
+              "aliases": ["句点と読点"]
+            },
+            "score": 1,
+            "position": {
+              "sentence": 2,
+              "word": 0,
+              "begin": 17,
+              "end": 22
+            }
+          }
+        ]);
+        done();
       }).catch(err => {
         console.error(err);
       })
