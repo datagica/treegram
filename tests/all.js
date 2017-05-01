@@ -138,8 +138,19 @@ describe('@datagica/treegram', () => {
           en: 'test 2'
         },
         aliases: ['句点と読点']
+      },
+      {
+        label: {
+          en: "asthenia",
+          fr: "asthénie"
+        },
+        aliases: [
+          "asthenia",
+          "asthénie"
+        ]
       }
     ];
+
 
     const db = new Treegram({
       debug: true,
@@ -369,6 +380,35 @@ describe('@datagica/treegram', () => {
               "word": 0,
               "begin": 17,
               "end": 22
+            }
+          }
+        ]);
+        done()
+      }).catch(err => done(err))
+    })
+
+    it('should support words and apostrophes', done => {
+      db.find("En médecine générale, 50% des patients se plaignent d'asthénie.").then(entities => {
+        // console.log("entities: " + JSON.stringify(entities, null, 2));
+        expect(entities).to.be.like([
+          {
+            "ngram": "d'asthénie",
+            "value": {
+              "label": {
+                "en": "asthenia",
+                "fr": "asthénie"
+              },
+              "aliases": [
+                "asthenia",
+                "asthénie"
+              ]
+            },
+            "score": 0.8, // no 1, because of the "d'" prefix which account for 2/10 of the total "mass"
+            "position": {
+              "sentence": 0,
+              "word": 9,
+              "begin": 54,
+              "end": 62
             }
           }
         ]);
