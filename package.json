@@ -1,8 +1,8 @@
 {
   "name": "@datagica/treegram",
-  "version": "0.1.1",
-  "description": "Treegram",
-  "main": "./lib/treegram.js",
+  "version": "0.2.0",
+  "description": "Treegram is a hierarchical n-gram extraction library",
+  "main": "./lib/index.js",
   "scripts": {
     "test": "node_modules/.bin/mocha --harmony --bail --require chai tests/*.js"
   },
@@ -21,9 +21,9 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-fuzzy": "^1.6.1",
-    "deep-eql": "^0.1.3",
-    "lodash": "^4.15.0",
-    "mocha": "^3.0.2",
+    "deep-eql": "^2.0.1",
+    "lodash": "^4.17.4",
+    "mocha": "^3.3.0",
     "underscore": "^1.8.3"
   }
 }

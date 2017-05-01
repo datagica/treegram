@@ -1,14 +1,32 @@
 # Treegram
 
-*hierarchical n-gram matching library*
+*Treegram is a hierarchical n-gram extraction library*
 
-## Usage
+## Overview
 
-### Installation
+Treegram is a hierarchical n-gram extraction library designed for named entities
+identification and substitution.
 
-    $ npm install @datagica/treegram --save
+It was created for use in the Datanote project (which is still in development)
+so code should be considered experimental and subject to change.
 
-### example
+Yes it is in Javascript, it is not the fastest but that's not really the point:
+treegram is more like a prototype. If the project gets real time, HR and money
+treegram will eventually be implemented as a native C++ Node module.
+
+Current JS code is not particularly optimized anyway, so there is room for
+improvement. Even without optimization, it can scale in parallel: for instance
+the intra-sentence algorithm could be a map-reduce operation.
+
+One more thing: it is important to keep in mind that using async functions to
+compute chunks in a non-blocking way is good for a multi-user server, but in
+term of raw performance and compute time it is slower than an old fashioned
+for-loop. It all comes done to compromises and use cases.
+
+In Datanote, processing in done in sub-process so blocking the thread is not
+(too much) of a problem.
+
+### Example
 
 ```javascript
 import Treegram from "@datagica/treegram";
@@ -51,8 +69,10 @@ treegram
     },
     "score": 1,
     "position": {
-      "begin": 0,
-      "end": 6
+      "sentence": 0, // absolute sentence index (ie. how many sentences before)
+      "word": 0,     // absolute word index (ie. how many words before)
+      "begin": 0,    // absolute position of the start of the sequence
+      "end": 6       // absolute position of the end of the sequence
     },
   },
   {
@@ -63,6 +83,8 @@ treegram
     },
     "score": 0.8,
     "position": {
+      "sentence": 0,
+      "word": 3,
       "begin": 17,
       "end": 27
     }
