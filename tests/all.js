@@ -415,5 +415,34 @@ describe('@datagica/treegram', () => {
         done()
       }).catch(err => done(err))
     })
+
+    it('should support \'s', done => {
+      db.find("my thesis is about studying asthenia's impacct of work life quality").then(entities => {
+        // console.log("entities: " + JSON.stringify(entities, null, 2));
+        expect(entities).to.be.like([
+          {
+            "ngram": "asthenia's",
+            "value": {
+              "label": {
+                "en": "asthenia",
+                "fr": "asthénie"
+              },
+              "aliases": [
+                "asthenia",
+                "asthénie"
+              ]
+            },
+            "score": 0.8, // no 1, because of the "d'" prefix which account for 2/10 of the total "mass"
+            "position": {
+              "sentence": 0,
+              "word": 5,
+              "begin": 28,
+              "end": 36
+            }
+          }
+        ]);
+        done()
+      }).catch(err => done(err))
+    })
   })
 })
