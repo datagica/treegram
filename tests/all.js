@@ -255,6 +255,7 @@ describe('@datagica/treegram', () => {
       }).catch(err => done(err))
     })
 
+
     it('should split complex sentences', done => {
       db.find('hi guys!! ' + // sentence 0
           'what\'s up? ' + // 1
@@ -275,7 +276,7 @@ describe('@datagica/treegram', () => {
             "score": 1,
             "position": {
               "sentence": 2,
-              "word": 1,
+              "word": 5,
               "begin": 25,
               "end": 34
             }
@@ -290,7 +291,7 @@ describe('@datagica/treegram', () => {
             "score": 1,
             "position": {
               "sentence": 4,
-              "word": 1,
+              "word": 11,
               "begin": 57,
               "end": 68
             }
@@ -299,6 +300,7 @@ describe('@datagica/treegram', () => {
         done();
       }).catch(err => done(err))
     })
+
 
     it('should split a multi-line sentence', done => {
       db.find(`
@@ -321,7 +323,7 @@ describe('@datagica/treegram', () => {
             "score": 1,
             "position": {
               "sentence": 2,
-              "word": 1,
+              "word": 22,
               "begin": 42,
               "end": 59
             }
@@ -337,7 +339,7 @@ describe('@datagica/treegram', () => {
             "score": 1,
             "position": {
               "sentence": 4,
-              "word": 10,
+              "word": 53,
               "begin": 99,
               "end": 110
             }
@@ -346,6 +348,7 @@ describe('@datagica/treegram', () => {
         done()
       }).catch(err => done(err))
     })
+
 
     it('should split basic japanese sentences', done => {
       db.find("では主にマル「。」について述べる。句点と読点（“、”）を合わせて句読点と呼ぶ。").then(entities => {
@@ -362,7 +365,7 @@ describe('@datagica/treegram', () => {
             "score": 1,
             "position": {
               "sentence": 1,
-              "word": 1,
+              "word": 2,
               "begin": 9,
               "end": 16
             }
@@ -377,7 +380,7 @@ describe('@datagica/treegram', () => {
             "score": 1,
             "position": {
               "sentence": 2,
-              "word": 0,
+              "word": 3,
               "begin": 17,
               "end": 22
             }
@@ -444,5 +447,7 @@ describe('@datagica/treegram', () => {
         done()
       }).catch(err => done(err))
     })
+
+
   })
 })
