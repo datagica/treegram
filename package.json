@@ -1,6 +1,6 @@
 {
   "name": "@datagica/treegram",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Treegram is a hierarchical n-gram extraction library",
   "main": "./lib/index.js",
   "scripts": {
@@ -16,7 +16,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@datagica/fast-index": "0.0.5"
+    "@datagica/fast-index": "0.0.5",
+    "@datagica/tokenize": "0.0.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
