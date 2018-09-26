@@ -276,7 +276,7 @@ describe('@datagica/treegram', () => {
             "score": 1,
             "position": {
               "sentence": 2,
-              "word": 5,
+              "word": 1,
               "begin": 25,
               "end": 34
             }
@@ -291,7 +291,7 @@ describe('@datagica/treegram', () => {
             "score": 1,
             "position": {
               "sentence": 4,
-              "word": 11,
+              "word": 1,
               "begin": 57,
               "end": 68
             }
@@ -323,7 +323,7 @@ describe('@datagica/treegram', () => {
             "score": 1,
             "position": {
               "sentence": 2,
-              "word": 22,
+              "word": 1,
               "begin": 42,
               "end": 59
             }
@@ -339,7 +339,7 @@ describe('@datagica/treegram', () => {
             "score": 1,
             "position": {
               "sentence": 4,
-              "word": 53,
+              "word": 10,
               "begin": 99,
               "end": 110
             }
@@ -365,7 +365,7 @@ describe('@datagica/treegram', () => {
             "score": 1,
             "position": {
               "sentence": 1,
-              "word": 2,
+              "word": 1,
               "begin": 9,
               "end": 16
             }
@@ -380,7 +380,7 @@ describe('@datagica/treegram', () => {
             "score": 1,
             "position": {
               "sentence": 2,
-              "word": 3,
+              "word": 0,
               "begin": 17,
               "end": 22
             }
